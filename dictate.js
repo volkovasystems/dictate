@@ -140,8 +140,10 @@ var dictate = function dictate( array, order, point ){
 	}
 
 	return decrease( array,
-		function onReduce( oldArray, newArray, index, array ){
-			var entity = ( oldArray.length? oldArray : array )[ index ];
+		function onReduce( oldArray, currentValue, index, array ){
+			var _oldArray = ( oldArray.length? oldArray : array );
+
+			var entity = _oldArray[ index ];
 
 			var name = entity[ point ] || entity.toString( );
 
@@ -150,21 +152,21 @@ var dictate = function dictate( array, order, point ){
 			if( typeof _order != "number" &&
 				!_order )
 			{
-				return array;
+				return _oldArray;
 
 			}else if( _order != index ){
 				var _entity = array[ _order ];
 
 				var _name = _entity[ point ] || _entity.toString( );
 
-				array[ index ] = _array[ _name ];
+				_oldArray[ index ] = _array[ _name ];
 
-				array[ _order ] = _array[ name ];
+				_oldArray[ _order ] = _array[ name ];
 
-				return array;
+				return dictate( _oldArray, order );
 
 			}else{
-				return array;
+				return _oldArray;
 			}
 
 		}, [ ] );
