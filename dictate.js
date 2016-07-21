@@ -79,7 +79,10 @@ var dictate = function dictate( array, order, point ){
 					"Array",
 					"[*]"
 				],
-				"order:required": "object",
+				"order:required": [
+					"object",
+					"[string]"
+				],
 				"point": [
 					"string",
 					"name"
@@ -93,6 +96,24 @@ var dictate = function dictate( array, order, point ){
 	}
 
 	if( !array.length ){
+		return array;
+	}
+
+	if( Array.isArray( order ) &&
+		order.length )
+	{
+		var _order = { };
+		var orderLength = order.length
+		for( var index = 0; index < orderLength; index++ ){
+			_order[ order[ index ] ] = index;
+		}
+
+		order = _order;
+	}
+
+	if( Array.isArray( order ) &&
+		!order.length )
+	{
 		return array;
 	}
 
