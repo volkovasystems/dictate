@@ -56,19 +56,27 @@
 
 	@include:
 		{
-			"decrease": "decrease"
+			"decrease": "decrease",
+			"doubt": "doubt"
 		}
 	@end-include
 */
 
 if( typeof window == "undefined" ){
 	var decrease = require( "decrease" );
+	var doubt = require( "doubt" );
 }
 
 if( typeof window != "undefined" &&
 	!( "decrease" in window ) )
 {
 	throw new Error( "decrease is not defined" );
+}
+
+if( typeof window != "undefined" &&
+	!( "doubt" in window ) )
+{
+	throw new Error( "doubt is not defined" );
 }
 
 var dictate = function dictate( array, order, point ){
@@ -91,7 +99,7 @@ var dictate = function dictate( array, order, point ){
 		@end-meta-configuration
 	*/
 
-	if( !Array.isArray( array ) ){
+	if( !doubt( array ).ARRAY ){
 		throw new Error( "invalid array" );
 	}
 
@@ -99,27 +107,21 @@ var dictate = function dictate( array, order, point ){
 		return array;
 	}
 
-	if( Array.isArray( order ) &&
-		order.length )
-	{
-		var _order = { };
+	if( doubt( order ).ARRAY && order.length ){
+		var position = { };
 		var orderLength = order.length
 		for( var index = 0; index < orderLength; index++ ){
-			_order[ order[ index ] ] = index;
+			position[ order[ index ] ] = index;
 		}
 
-		order = _order;
+		order = position;
 	}
 
-	if( Array.isArray( order ) &&
-		!order.length )
-	{
+	if( doubt( order ).ARRAY && !order.length ){
 		return array;
 	}
 
-	if( typeof order != "object" ||
-		!Object.keys( order ).length )
-	{
+	if( typeof order != "object" || !Object.keys( order ).length ){
 		return array;
 	}
 
@@ -129,44 +131,42 @@ var dictate = function dictate( array, order, point ){
 		throw new Error( "invalid point" );
 	}
 
-	var _array = { };
+	var list = { };
 	var arrayLength = array.length;
 	for( var index = 0; index < arrayLength; index++ ){
 		var entity = array[ index ];
 
 		var name = entity[ point ] || entity.toString( );
 
-		_array[ name ] = entity;
+		list[ name ] = entity;
 	}
 
 	return decrease( array,
-		function onReduce( oldArray, currentValue, index, array ){
-			var _oldArray = ( oldArray.length? oldArray : array );
+		function onDecrease( oldArray, currentValue, index, array ){
+			var oldList = ( oldArray.length? oldArray : array );
 
-			var entity = _oldArray[ index ];
+			var entity = oldList[ index ];
 
 			var name = entity[ point ] || entity.toString( );
 
-			var _order = order[ name ];
+			var position = order[ name ];
 
-			if( typeof _order != "number" &&
-				!_order )
-			{
-				return _oldArray;
+			if( typeof position != "number" && !position ){
+				return oldList;
 
-			}else if( _order != index ){
-				var _entity = array[ _order ];
+			}else if( position != index ){
+				var data = array[ position ];
 
-				var _name = _entity[ point ] || _entity.toString( );
+				var reference = data[ point ] || data.toString( );
 
-				_oldArray[ index ] = _array[ _name ];
+				oldList[ index ] = list[ reference ];
 
-				_oldArray[ _order ] = _array[ name ];
+				oldList[ position ] = list[ name ];
 
-				return dictate( _oldArray, order );
+				return dictate( oldList, order );
 
 			}else{
-				return _oldArray;
+				return oldList;
 			}
 
 		}, [ ] );
