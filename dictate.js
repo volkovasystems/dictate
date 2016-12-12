@@ -34,6 +34,9 @@
 			"file": "dictate.js",
 			"module": "dictate",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/dictate.git",
 			"test": "dictate-test.js",
@@ -57,29 +60,17 @@
 	@include:
 		{
 			"decrease": "decrease",
-			"doubt": "doubt"
+			"doubt": "doubt",
+			"protype": "protype"
 		}
 	@end-include
 */
 
-if( typeof window == "undefined" ){
-	var decrease = require( "decrease" );
-	var doubt = require( "doubt" );
-}
+const decrease = require( "decrease" );
+const doubt = require( "doubt" );
+const protype = require( "protype" );
 
-if( typeof window != "undefined" &&
-	!( "decrease" in window ) )
-{
-	throw new Error( "decrease is not defined" );
-}
-
-if( typeof window != "undefined" &&
-	!( "doubt" in window ) )
-{
-	throw new Error( "doubt is not defined" );
-}
-
-var dictate = function dictate( array, order, point ){
+const dictate = function dictate( array, order, point ){
 	/*;
 		@meta-configuration:
 			{
@@ -108,8 +99,8 @@ var dictate = function dictate( array, order, point ){
 	}
 
 	if( doubt( order ).ARRAY && order.length ){
-		var position = { };
-		var orderLength = order.length
+		let position = { };
+		let orderLength = order.length
 		for( var index = 0; index < orderLength; index++ ){
 			position[ order[ index ] ] = index;
 		}
@@ -121,43 +112,43 @@ var dictate = function dictate( array, order, point ){
 		return array;
 	}
 
-	if( typeof order != "object" || !Object.keys( order ).length ){
+	if( !protype( order, OBJECT ) || !Object.keys( order ).length ){
 		return array;
 	}
 
 	point = point || "name";
 
-	if( typeof point != "string" ){
+	if( !protype( point, STRING ) ){
 		throw new Error( "invalid point" );
 	}
 
-	var list = { };
-	var arrayLength = array.length;
-	for( var index = 0; index < arrayLength; index++ ){
-		var entity = array[ index ];
+	let list = { };
+	let arrayLength = array.length;
+	for( let index = 0; index < arrayLength; index++ ){
+		let entity = array[ index ];
 
-		var name = entity[ point ] || entity.toString( );
+		let name = entity[ point ] || entity.toString( );
 
 		list[ name ] = entity;
 	}
 
 	return decrease( array,
 		function onDecrease( oldArray, currentValue, index, array ){
-			var oldList = ( oldArray.length? oldArray : array );
+			let oldList = ( oldArray.length? oldArray : array );
 
-			var entity = oldList[ index ];
+			let entity = oldList[ index ];
 
-			var name = entity[ point ] || entity.toString( );
+			let name = entity[ point ] || entity.toString( );
 
-			var position = order[ name ];
+			let position = order[ name ];
 
-			if( typeof position != "number" && !position ){
+			if( !protype( position, NUMBER ) && !position ){
 				return oldList;
 
 			}else if( position != index ){
-				var data = array[ position ];
+				let data = array[ position ];
 
-				var reference = data[ point ] || data.toString( );
+				let reference = data[ point ] || data.toString( );
 
 				oldList[ index ] = list[ reference ];
 
@@ -172,6 +163,4 @@ var dictate = function dictate( array, order, point ){
 		}, [ ] );
 };
 
-if( typeof module != "undefined" ){
-	module.exports = dictate;
-}
+module.exports = dictate;
