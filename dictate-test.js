@@ -2,4 +2,4 @@
 
 const dictate = require( "./dictate.js" );
 
-console.log( dictate( ) );
+console.log( dictate( [ 1, 2 ], [ 2, 1 ] ) );
