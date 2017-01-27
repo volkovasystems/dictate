@@ -90,7 +90,7 @@ const dictate = function dictate( array, order, point ){
 		@end-meta-configuration
 	*/
 
-	if( !doubt( array ).ARRAY ){
+	if( !doubt( array, ARRAY ) ){
 		throw new Error( "invalid array" );
 	}
 
@@ -98,7 +98,7 @@ const dictate = function dictate( array, order, point ){
 		return array;
 	}
 
-	if( doubt( order ).ARRAY && order.length ){
+	if( doubt( order, ARRAY ) && order.length ){
 		let position = { };
 		let orderLength = order.length
 		for( var index = 0; index < orderLength; index++ ){
@@ -108,7 +108,7 @@ const dictate = function dictate( array, order, point ){
 		order = position;
 	}
 
-	if( doubt( order ).ARRAY && !order.length ){
+	if( doubt( order, ARRAY ) && !order.length ){
 		return array;
 	}
 
