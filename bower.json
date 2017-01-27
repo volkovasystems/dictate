@@ -1,6 +1,6 @@
 {
   "name": "dictate",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Dictate the order of the array.",
   "main": "dictate.js",
   "support": "dictate.support.js",
@@ -24,7 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "decrease": "^0.7.0",
+    "decrease": "^0.8.0",
     "doubt": "^0.10.0",
     "protype": "^0.11.0"
   }
