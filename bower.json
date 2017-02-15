@@ -1,8 +1,9 @@
 {
   "name": "dictate",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Dictate the order of the array.",
   "main": "dictate.deploy.js",
+  "support": "dictate.support.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
@@ -22,8 +23,8 @@
     "tests"
   ],
   "dependencies": {
-    "decrease": "^0.9.0",
-    "doubt": "^0.14.0",
-    "protype": "^0.15.0"
+    "decrease": "^0.11.0",
+    "doubt": "^0.16.0",
+    "protype": "^0.17.0"
   }
 }
