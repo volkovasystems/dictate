@@ -1,13 +1,13 @@
 {
   "name": "dictate",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Dictate the order of the array.",
   "main": "dictate.js",
   "support": "dictate.support.js",
   "deploy": "dictate.deploy.js",
   "browser": "dictate.deploy.js",
   "scripts": {
-    "build": "babel dictate.js --out-file dictate.support.js --source-maps && webpack --progress",
+    "build": "babel dictate.js --out-file dictate.support.js --source-maps && webpack --progress --display-modules",
     "test": "mocha dictate-test.js"
   },
   "repository": {
@@ -30,8 +30,8 @@
   "homepage": "https://github.com/volkovasystems/dictate#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "decrease": "^0.11.0",
-    "doubt": "^0.16.0",
+    "decrease": "^0.12.0",
+    "doubt": "^0.17.0",
     "protype": "^0.17.0"
   },
   "devDependencies": {
