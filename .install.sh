@@ -1,8 +1,10 @@
 yarn add \
 babel-runtime \
+arkount \
 decrease \
 doubt \
 protype \
+stringe \
 --save && \
 yarn add \
 babel-cli \
@@ -13,8 +15,10 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
+arkount \
 decrease \
 doubt \
 protype \
+stringe \
 --save \
 --force-latest
