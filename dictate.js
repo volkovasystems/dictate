@@ -59,16 +59,20 @@
 
 	@include:
 		{
+			"arkount": "arkount",
 			"decrease": "decrease",
 			"doubt": "doubt",
-			"protype": "protype"
+			"protype": "protype",
+			"stringe": "stringe"
 		}
 	@end-include
 */
 
+const arkount = require( "arkount" );
 const decrease = require( "decrease" );
 const doubt = require( "doubt" );
 const protype = require( "protype" );
+const stringe = require( "stringe" );
 
 const dictate = function dictate( array, order, point ){
 	/*;
@@ -98,9 +102,9 @@ const dictate = function dictate( array, order, point ){
 		return array;
 	}
 
-	if( doubt( order, ARRAY ) && order.length ){
+	if( doubt( order, ARRAY ) && arkount( order ) ){
 		let position = { };
-		let orderLength = order.length
+		let orderLength = arkount( order );
 		for( var index = 0; index < orderLength; index++ ){
 			position[ order[ index ] ] = index;
 		}
@@ -127,7 +131,7 @@ const dictate = function dictate( array, order, point ){
 	for( let index = 0; index < arrayLength; index++ ){
 		let entity = array[ index ];
 
-		let name = entity[ point ] || entity.toString( );
+		let name = entity[ point ] || stringe( entity );
 
 		list[ name ] = entity;
 	}
@@ -138,7 +142,7 @@ const dictate = function dictate( array, order, point ){
 
 			let entity = oldList[ index ];
 
-			let name = entity[ point ] || entity.toString( );
+			let name = entity[ point ] || stringe( entity );
 
 			let position = order[ name ];
 
@@ -148,7 +152,7 @@ const dictate = function dictate( array, order, point ){
 			}else if( position != index ){
 				let data = array[ position ];
 
-				let reference = data[ point ] || data.toString( );
+				let reference = data[ point ] || stringe( data );
 
 				oldList[ index ] = list[ reference ];
 
