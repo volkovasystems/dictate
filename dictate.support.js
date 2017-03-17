@@ -59,16 +59,20 @@
               
               	@include:
               		{
+              			"arkount": "arkount",
               			"decrease": "decrease",
               			"doubt": "doubt",
-              			"protype": "protype"
+              			"protype": "protype",
+              			"stringe": "stringe"
               		}
               	@end-include
               */var _keys = require("babel-runtime/core-js/object/keys");var _keys2 = _interopRequireDefault(_keys);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
+var arkount = require("arkount");
 var decrease = require("decrease");
 var doubt = require("doubt");
 var protype = require("protype");
+var stringe = require("stringe");
 
 var dictate = function dictate(array, order, point) {
 	/*;
@@ -98,9 +102,9 @@ var dictate = function dictate(array, order, point) {
 		return array;
 	}
 
-	if (doubt(order, ARRAY) && order.length) {
+	if (doubt(order, ARRAY) && arkount(order)) {
 		var position = {};
-		var orderLength = order.length;
+		var orderLength = arkount(order);
 		for (var index = 0; index < orderLength; index++) {
 			position[order[index]] = index;
 		}
@@ -127,7 +131,7 @@ var dictate = function dictate(array, order, point) {
 	for (var _index = 0; _index < arrayLength; _index++) {
 		var entity = array[_index];
 
-		var name = entity[point] || entity.toString();
+		var name = entity[point] || stringe(entity);
 
 		list[name] = entity;
 	}
@@ -138,7 +142,7 @@ var dictate = function dictate(array, order, point) {
 
 		var entity = oldList[index];
 
-		var name = entity[point] || entity.toString();
+		var name = entity[point] || stringe(entity);
 
 		var position = order[name];
 
@@ -148,7 +152,7 @@ var dictate = function dictate(array, order, point) {
 		} else if (position != index) {
 			var data = array[position];
 
-			var reference = data[point] || data.toString();
+			var reference = data[point] || stringe(data);
 
 			oldList[index] = list[reference];
 
