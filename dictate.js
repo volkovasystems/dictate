@@ -45,6 +45,8 @@
 	@end-module-configuration
 
 	@module-documentation:
+		Dictate the order of the array.
+
 		This will dictate the order of the array and will return a new array
 			based on the order and given point.
 
@@ -59,20 +61,34 @@
 
 	@include:
 		{
-			"arkount": "arkount",
-			"decrease": "decrease",
+			"arid": "arid",
 			"doubt": "doubt",
+			"empt": "empt",
+			"falzy": "falzy",
+			"filled": "filled",
+			"norder": "norder",
 			"protype": "protype",
-			"stringe": "stringe"
+			"rder": "rder",
+			"stringe": "stringe",
+			"wichevr": "wichevr",
+			"xplace": "xplace",
+			"xtrak": "xtrak"
 		}
 	@end-include
 */
 
-const arkount = require( "arkount" );
-const decrease = require( "decrease" );
+const arid = require( "arid" );
 const doubt = require( "doubt" );
+const empt = require( "empt" );
+const falzy = require( "falzy" );
+const filled = require( "filled" );
+const norder = require( "norder" );
 const protype = require( "protype" );
+const rder = require( "rder" );
 const stringe = require( "stringe" );
+const wichevr = require( "wichevr" );
+const xplace = require( "xplace" );
+const xtrak = require( "xtrak" );
 
 const dictate = function dictate( array, order, point ){
 	/*;
@@ -87,7 +103,9 @@ const dictate = function dictate( array, order, point ){
 					"[string]"
 				],
 				"point": [
+					"number"
 					"string",
+					"symbol"
 					"name"
 				]
 			}
@@ -98,73 +116,40 @@ const dictate = function dictate( array, order, point ){
 		throw new Error( "invalid array" );
 	}
 
-	if( !array.length ){
+	if( arid( array ) ){
 		return array;
 	}
 
-	if( doubt( order, ARRAY ) && arkount( order ) ){
-		let position = { };
-		let orderLength = arkount( order );
-		for( var index = 0; index < orderLength; index++ ){
-			position[ order[ index ] ] = index;
-		}
+	point = wichevr( point, "name" );
 
-		order = position;
-	}
-
-	if( doubt( order, ARRAY ) && !order.length ){
-		return array;
-	}
-
-	if( !protype( order, OBJECT ) || !Object.keys( order ).length ){
-		return array;
-	}
-
-	point = point || "name";
-
-	if( !protype( point, STRING ) ){
+	if( !protype( point, NUMBER + STRING + SYMBOL ) ){
 		throw new Error( "invalid point" );
 	}
 
-	let list = { };
-	let arrayLength = array.length;
-	for( let index = 0; index < arrayLength; index++ ){
-		let entity = array[ index ];
+	if( doubt( order, ARRAY ) && filled( order ) ){
+		order = rder( array, point );
 
-		let name = entity[ point ] || stringe( entity );
-
-		list[ name ] = entity;
+	}else if( doubt( order, ARRAY ) && arid( order ) ){
+		return array;
 	}
 
-	return decrease( array,
-		function onDecrease( oldArray, currentValue, index, array ){
-			let oldList = ( oldArray.length? oldArray : array );
+	if( !protype( order, OBJECT ) || empt( order ) ){
+		return array;
+	}
 
-			let entity = oldList[ index ];
+	if( !norder( order, array.length ) ){
+		throw new Error( "invalid order" );
+	}
 
-			let name = entity[ point ] || stringe( entity );
+	order = xplace( order );
 
-			let position = order[ name ];
-
-			if( !protype( position, NUMBER ) && !position ){
-				return oldList;
-
-			}else if( position != index ){
-				let data = array[ position ];
-
-				let reference = data[ point ] || stringe( data );
-
-				oldList[ index ] = list[ reference ];
-
-				oldList[ position ] = list[ name ];
-
-				return dictate( oldList, order );
-
-			}else{
-				return oldList;
-			}
-
-		}, [ ] );
+	return Object.keys( order ).sort( ).reduce( ( list, index ) => {
+		return list.concat( xtrak( array, ( element ) => {
+			return ( element[ point ] === order[ index ] ||
+				element === order[ index ] ||
+				stringe( element ) === order[ index ] );
+		} ) );
+	}, [ ] ).concat( array );
 };
 
 module.exports = dictate;

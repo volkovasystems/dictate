@@ -45,6 +45,8 @@
               	@end-module-configuration
               
               	@module-documentation:
+              		Dictate the order of the array.
+              
               		This will dictate the order of the array and will return a new array
               			based on the order and given point.
               
@@ -59,20 +61,34 @@
               
               	@include:
               		{
-              			"arkount": "arkount",
-              			"decrease": "decrease",
+              			"arid": "arid",
               			"doubt": "doubt",
+              			"empt": "empt",
+              			"falzy": "falzy",
+              			"filled": "filled",
+              			"norder": "norder",
               			"protype": "protype",
-              			"stringe": "stringe"
+              			"rder": "rder",
+              			"stringe": "stringe",
+              			"wichevr": "wichevr",
+              			"xplace": "xplace",
+              			"xtrak": "xtrak"
               		}
               	@end-include
               */var _keys = require("babel-runtime/core-js/object/keys");var _keys2 = _interopRequireDefault(_keys);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-var arkount = require("arkount");
-var decrease = require("decrease");
+var arid = require("arid");
 var doubt = require("doubt");
+var empt = require("empt");
+var falzy = require("falzy");
+var filled = require("filled");
+var norder = require("norder");
 var protype = require("protype");
+var rder = require("rder");
 var stringe = require("stringe");
+var wichevr = require("wichevr");
+var xplace = require("xplace");
+var xtrak = require("xtrak");
 
 var dictate = function dictate(array, order, point) {
 	/*;
@@ -87,7 +103,9 @@ var dictate = function dictate(array, order, point) {
                                                      				"[string]"
                                                      			],
                                                      			"point": [
+                                                     				"number"
                                                      				"string",
+                                                     				"symbol"
                                                      				"name"
                                                      			]
                                                      		}
@@ -98,73 +116,40 @@ var dictate = function dictate(array, order, point) {
 		throw new Error("invalid array");
 	}
 
-	if (!array.length) {
+	if (arid(array)) {
 		return array;
 	}
 
-	if (doubt(order, ARRAY) && arkount(order)) {
-		var position = {};
-		var orderLength = arkount(order);
-		for (var index = 0; index < orderLength; index++) {
-			position[order[index]] = index;
-		}
+	point = wichevr(point, "name");
 
-		order = position;
-	}
-
-	if (doubt(order, ARRAY) && !order.length) {
-		return array;
-	}
-
-	if (!protype(order, OBJECT) || !(0, _keys2.default)(order).length) {
-		return array;
-	}
-
-	point = point || "name";
-
-	if (!protype(point, STRING)) {
+	if (!protype(point, NUMBER + STRING + SYMBOL)) {
 		throw new Error("invalid point");
 	}
 
-	var list = {};
-	var arrayLength = array.length;
-	for (var _index = 0; _index < arrayLength; _index++) {
-		var entity = array[_index];
+	if (doubt(order, ARRAY) && filled(order)) {
+		order = rder(array, point);
 
-		var name = entity[point] || stringe(entity);
-
-		list[name] = entity;
+	} else if (doubt(order, ARRAY) && arid(order)) {
+		return array;
 	}
 
-	return decrease(array,
-	function onDecrease(oldArray, currentValue, index, array) {
-		var oldList = oldArray.length ? oldArray : array;
+	if (!protype(order, OBJECT) || empt(order)) {
+		return array;
+	}
 
-		var entity = oldList[index];
+	if (!norder(order, array.length)) {
+		throw new Error("invalid order");
+	}
 
-		var name = entity[point] || stringe(entity);
+	order = xplace(order);
 
-		var position = order[name];
-
-		if (!protype(position, NUMBER) && !position) {
-			return oldList;
-
-		} else if (position != index) {
-			var data = array[position];
-
-			var reference = data[point] || stringe(data);
-
-			oldList[index] = list[reference];
-
-			oldList[position] = list[name];
-
-			return dictate(oldList, order);
-
-		} else {
-			return oldList;
-		}
-
-	}, []);
+	return (0, _keys2.default)(order).sort().reduce(function (list, index) {
+		return list.concat(xtrak(array, function (element) {
+			return element[point] === order[index] ||
+			element === order[index] ||
+			stringe(element) === order[index];
+		}));
+	}, []).concat(array);
 };
 
 module.exports = dictate;

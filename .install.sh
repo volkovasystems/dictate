@@ -1,10 +1,17 @@
 yarn add \
 babel-runtime \
-arkount \
-decrease \
+arid \
 doubt \
+empt \
+falzy \
+filled \
+norder \
 protype \
+rder \
 stringe \
+wichevr \
+xplace \
+xtrak \
 --save && \
 yarn add \
 babel-cli \
@@ -15,10 +22,17 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
-arkount \
-decrease \
+arid \
 doubt \
+empt \
+falzy \
+filled \
+norder \
 protype \
+rder \
 stringe \
+wichevr \
+xplace \
+xtrak \
 --save \
 --force-latest
