@@ -1,6 +1,6 @@
 {
   "name": "dictate",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Dictate the order of the array.",
   "main": "dictate.deploy.js",
   "support": "dictate.support.js",
@@ -22,19 +22,6 @@
     "test",
     "tests"
   ],
-  "resolutions": {
-    "filled": "^0.21.0",
-    "empt": "^0.22.0",
-    "arid": "^0.25.0",
-    "doubt": "^0.26.0",
-    "stringe": "^0.3.0",
-    "wichevr": "^0.9.0",
-    "arkount": "^0.7.0",
-    "raze": "^0.29.0",
-    "falze": "^0.22.0",
-    "eqe": "^0.2.0",
-    "nafe": "^0.2.0"
-  },
   "dependencies": {
     "arid": "^0.25.0",
     "doubt": "^0.26.0",
@@ -47,6 +34,6 @@
     "stringe": "^0.3.0",
     "wichevr": "^0.9.0",
     "xplace": "^0.0.0",
-    "xtrak": "^0.0.0"
+    "xtrak": "^0.2.0"
   }
 }
