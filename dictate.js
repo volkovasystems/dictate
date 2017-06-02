@@ -127,7 +127,7 @@ const dictate = function dictate( array, order, point ){
 	}
 
 	if( doubt( order, ARRAY ) && filled( order ) ){
-		order = rder( array, point );
+		order = rder( order, point );
 
 	}else if( doubt( order, ARRAY ) && arid( order ) ){
 		return array;
