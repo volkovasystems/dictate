@@ -1,8 +1,30 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./dictate.deploy.js">
-		</script>
+		<title>dictate unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./dictate.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "dictate unit test", function( assert ) {
+
+				assert.equal( Array.isArray( dictate( [ Array, Object, RegExp, Date ], { "RegExp": 0, "Array": 1, "Object": 2 } ) ),
+								true, "should return true" );
+
+				assert.deepEqual( dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] ),
+									[ 5, 4, 3, 2, 1 ], "should follow order" );
+									
+			} );
+		</script>
+	</body>
 </html>
