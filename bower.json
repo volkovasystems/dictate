@@ -1,12 +1,13 @@
 {
   "name": "dictate",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "Dictate the order of the array.",
   "main": "dictate.deploy.js",
   "support": "dictate.support.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+    "Vinse Vinalon <vinsevinalon@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
@@ -23,17 +24,17 @@
     "tests"
   ],
   "dependencies": {
-    "arid": "^0.25.0",
-    "doubt": "^0.26.0",
-    "empt": "^0.22.0",
-    "falzy": "^0.19.0",
-    "filled": "^0.21.0",
-    "norder": "^0.1.0",
-    "protype": "^0.21.0",
-    "rder": "^0.1.0",
-    "stringe": "^0.3.0",
-    "wichevr": "^0.9.0",
-    "xplace": "^0.0.0",
-    "xtrak": "^0.4.0"
+    "arid": "^0.26.0",
+    "doubt": "^0.27.0",
+    "empt": "^0.23.0",
+    "falzy": "^0.20.0",
+    "filled": "^0.22.0",
+    "norder": "^0.2.0",
+    "protype": "^0.22.0",
+    "rder": "^0.2.0",
+    "stringe": "^0.4.0",
+    "wichevr": "^0.10.0",
+    "xplace": "^0.1.0",
+    "xtrak": "^0.5.0"
   }
 }
