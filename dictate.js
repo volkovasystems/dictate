@@ -134,7 +134,7 @@ const dictate = function dictate( array, order, point ){
 		return array;
 	}
 
-	if( !protype( order, OBJECT ) || empt( order ) ){
+	if( typeof order != "object" || empt( order ) ){
 		return array;
 	}
 

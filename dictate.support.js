@@ -76,7 +76,7 @@
               			"xtrak": "xtrak"
               		}
               	@end-include
-              */var _keys = require("babel-runtime/core-js/object/keys");var _keys2 = _interopRequireDefault(_keys);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+              */var _keys = require("babel-runtime/core-js/object/keys");var _keys2 = _interopRequireDefault(_keys);var _typeof2 = require("babel-runtime/helpers/typeof");var _typeof3 = _interopRequireDefault(_typeof2);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var arid = require("arid");
 var doubt = require("doubt");
@@ -134,7 +134,7 @@ var dictate = function dictate(array, order, point) {
 		return array;
 	}
 
-	if (!protype(order, OBJECT) || empt(order)) {
+	if ((typeof order === "undefined" ? "undefined" : (0, _typeof3.default)(order)) != "object" || empt(order)) {
 		return array;
 	}
 
