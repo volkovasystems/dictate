@@ -70,6 +70,14 @@ const path = require( "path" );
 
 describe( "dictate", ( ) => {
 
+	describe( "`dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )`", ( ) => {
+		it( "should be equal to [ 5, 4, 3, 2, 1 ]", ( ) => {
+
+			assert.deepEqual( dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] ), [ 5, 4, 3, 2, 1 ] );
+
+		} );
+	} );
+
 } );
 
 //: @end-server
@@ -79,6 +87,14 @@ describe( "dictate", ( ) => {
 
 describe( "dictate", ( ) => {
 
+	describe( "`dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )`", ( ) => {
+		it( "should be equal to [ 5, 4, 3, 2, 1 ]", ( ) => {
+
+			assert.deepEqual( dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] ), [ 5, 4, 3, 2, 1 ] );
+
+		} );
+	} );
+
 } );
 
 //: @end-client
@@ -87,6 +103,24 @@ describe( "dictate", ( ) => {
 //: @bridge:
 
 describe( "dictate", ( ) => {
+
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
+
+	describe( "`dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )`", ( ) => {
+		it( "should be equal to [ 5, 4, 3, 2, 1 ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return JSON.stringify( dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] ) );
+				}
+
+			).value;
+			//: @end-ignore
+			assert.deepEqual( JSON.parse( result ), [ 5, 4, 3, 2, 1 ] );
+
+		} );
+	} );
 
 } );
 

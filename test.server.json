@@ -1,16 +1,32 @@
 {
-  "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-31T06:24:03.794Z",
-    "end": "2017-08-31T06:24:03.794Z",
-    "duration": 0
-  },
-  "tests": [],
-  "pending": [],
-  "failures": [],
-  "passes": []
+	"stats": {
+		"suites": 2,
+		"tests": 1,
+		"passes": 1,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-09-01T03:37:14.720Z",
+		"end": "2017-09-01T03:37:14.740Z",
+		"duration": 20
+	},
+	"tests": [
+		{
+			"title": "should be equal to [ 5, 4, 3, 2, 1 ]",
+			"fullTitle": "dictate `dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )` should be equal to [ 5, 4, 3, 2, 1 ]",
+			"duration": 16,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should be equal to [ 5, 4, 3, 2, 1 ]",
+			"fullTitle": "dictate `dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )` should be equal to [ 5, 4, 3, 2, 1 ]",
+			"duration": 16,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }

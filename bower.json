@@ -22,5 +22,22 @@
 		"bower_components",
 		"test",
 		"tests"
-	]
+	],
+	"resolutions": {
+		"stringe": "^0.6.0"
+	},
+	"dependencies": {
+		"arid": "^0.30.0",
+		"doubt": "^0.34.0",
+		"empt": "^0.27.0",
+		"falzy": "^0.23.0",
+		"filled": "^0.26.0",
+		"norder": "^0.4.0",
+		"protype": "^0.24.0",
+		"rder": "^0.6.0",
+		"stringe": "^0.6.0",
+		"wichevr": "^0.14.0",
+		"xplace": "^0.3.0",
+		"xtrak": "^0.7.0"
+	}
 }

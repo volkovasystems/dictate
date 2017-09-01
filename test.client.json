@@ -1,0 +1,84 @@
+{
+	"state": {
+		"passed": 1,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-09-01T03:37:15.834Z",
+	"end": "2017-09-01T03:37:50.435Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "dictate",
+			"duration": 0,
+			"start": "2017-09-01T03:37:50.105Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "dictate",
+			"duration": 148,
+			"start": "2017-09-01T03:37:50.106Z",
+			"end": "2017-09-01T03:37:50.254Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-09-01T03:37:50.109Z",
+					"end": "2017-09-01T03:37:50.109Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "dictate",
+					"associatedTest": "should be equal to [ 5, 4, 3, 2, 1 ]"
+				},
+				{
+					"start": "2017-09-01T03:37:50.253Z",
+					"end": "2017-09-01T03:37:50.253Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "dictate",
+					"associatedTest": "should be equal to [ 5, 4, 3, 2, 1 ]"
+				},
+				{
+					"start": "2017-09-01T03:37:50.254Z",
+					"end": "2017-09-01T03:37:50.254Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "dictate"
+				}
+			]
+		},
+		{
+			"name": "`dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )`",
+			"duration": 147,
+			"start": "2017-09-01T03:37:50.107Z",
+			"end": "2017-09-01T03:37:50.254Z",
+			"tests": [
+				{
+					"name": "should be equal to [ 5, 4, 3, 2, 1 ]",
+					"start": "2017-09-01T03:37:50.108Z",
+					"end": "2017-09-01T03:37:50.253Z",
+					"duration": 145,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

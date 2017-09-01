@@ -66,6 +66,14 @@ const dictate = require( "./dictate.js" );
 
 describe( "dictate", ( ) => {
 
+	describe( "`dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] )`", ( ) => {
+		it( "should be equal to [ 5, 4, 3, 2, 1 ]", ( ) => {
+
+			assert.deepEqual( dictate( [ 1, 2, 3, 4, 5 ], [ 5, 4, 3, 2, 1 ] ), [ 5, 4, 3, 2, 1 ] );
+
+		} );
+	} );
+
 } );
 
 //: @end-server
